@@ -1,0 +1,42 @@
+import { getSelectedCharacter } from "../state.js";
+import { setupMockChat } from "../chat.js";
+
+export function renderChat() {
+    const app = document.querySelector("#app");
+    const character = getSelectedCharacter();
+
+    app.innerHTML = `
+    <section class="view chat-layout">
+        <header class="chat-header">
+        <div class="character-avatar">${character.avatar}</div>
+
+        <div>
+            <h1 class="chat-title">Chat con ${character.name}</h1>
+            <p class="chat-subtitle">${character.franchise} · Respuesta simulada por ahora</p>
+        </div>
+        </header>
+
+        <div id="messages" class="messages">
+        <div class="message message-character">
+            Soy ${character.name}. Todavía no estoy conectado a Gemini, pero ya puedo ayudarte a probar la interfaz.
+        </div>
+        </div>
+
+        <form id="chat-form" class="chat-form">
+        <input
+            id="chat-input"
+            class="chat-input"
+            type="text"
+            placeholder="Escribí tu mensaje..."
+            autocomplete="off"
+        />
+
+        <button class="btn btn-primary" type="submit">
+            Enviar
+        </button>
+        </form>
+    </section>
+    `;
+
+    setupMockChat(character);
+}  
