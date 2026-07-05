@@ -1,4 +1,4 @@
-import { characters } from "../characters.js";
+import { characters } from "../data/characters/index.js";
 import { setSelectedCharacter } from "../state.js";
 import { navigateTo } from "../router.js";
 
@@ -37,7 +37,8 @@ export function renderHome() {
             .map(
                 (character) => `
                 <button class="character-card" data-character-id="${character.id}">
-                    <div class="character-avatar">${character.avatar}</div>
+                    <div class="character-avatar">
+                    <img src="${character.avatar}" alt="${character.name}" class="character-img" /></div>
                     <h3>${character.name}</h3>
                     <p class="character-franchise">${character.franchise}</p>
                     <p class="character-description">${character.description}</p>

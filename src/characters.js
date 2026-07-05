@@ -1,10 +1,10 @@
-export const characters = [
+/* export const characters = [
     {
         id: "deadpool",
         name: "Deadpool",
         franchise: "Marvel",
         description: "Sarcástico, rápido y rompe la cuarta pared.",
-        avatar: "🟥",
+        avatar: "/src/images/Deadpool.png",
         systemPrompt: "..."
     },
     {
@@ -12,7 +12,7 @@ export const characters = [
         name: "Rick Sanchez",
         franchise: "Rick and Morty",
         description: "Científico brillante, irónico y caótico.",
-        avatar: "🧪",
+        avatar: "src/images/RickSanchez.PNG",
         systemPrompt: "..."
     },
     {
@@ -20,7 +20,7 @@ export const characters = [
         name: "Naruto Uzumaki",
         franchise: "Naruto",
         description: "Optimista, energético y determinado.",
-        avatar: "🍥",
+        avatar: "/src/images/Naruto.PNG",
         systemPrompt: "..."
     }
-];
+]; */

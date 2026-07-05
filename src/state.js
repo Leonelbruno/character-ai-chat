@@ -1,4 +1,4 @@
-import { characters } from "./characters.js";
+import { characters } from "./data/characters/index.js";
 
 const SELECTED_CHARACTER_KEY = "selectedCharacterId";
 

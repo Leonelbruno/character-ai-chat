@@ -8,7 +8,8 @@ export function renderChat() {
     app.innerHTML = `
     <section class="view chat-layout">
         <header class="chat-header">
-        <div class="character-avatar">${character.avatar}</div>
+        <div class="character-avatar">
+                    <img src="${character.avatar}" alt="${character.name}" class="character-img" /></div>
 
         <div>
             <h1 class="chat-title">Chat con ${character.name}</h1>
