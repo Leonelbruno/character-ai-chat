@@ -17,6 +17,11 @@ export function getMessages(characterId) {
     return chatHistories[characterId] || [];
 }
 
+export function getRecentMessages(characterId, limit = 8) {
+    const messages = getMessages(characterId);
+    return messages.slice(-limit);
+}
+
 export function addMessage(characterId, message) {
     if (!chatHistories[characterId]) {
         chatHistories[characterId] = [];

@@ -1,10 +1,9 @@
 // Coordinamos el flujo del chat
 
-import { ensureCharacterHistory, getMessages, addMessage } from "./chatState.js";
-
+import { ensureCharacterHistory, getMessages, getRecentMessages, addMessage } from "./chatState.js";
 import { renderMessages, showTyping, setChatLoading, showChatError } from "./chatRenderer.js";
-
-import { isValidMessage, createMessage, getMockReply } from "./utils.js";
+import { isValidMessage, createMessage } from "./utils.js";
+import { sendChatMessage } from "./apiClient.js";
 
 export function setupChat(character) {
     const form = document.querySelector("#chat-form");
@@ -15,7 +14,6 @@ export function setupChat(character) {
     let isLoading = false;
 
     ensureCharacterHistory(character);
-    renderMessages(messagesContainer, getMessages(character.id));
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -37,12 +35,18 @@ export function setupChat(character) {
 
         const typingElement = showTyping(messagesContainer);
 
-        setTimeout(() => {
+        setTimeout(async () => {
             try {
                 typingElement.remove();
 
-                const reply = getMockReply(character.id);
-                const characterMessage = createMessage("character", reply);
+                const recentMessages = getRecentMessages(character.id, 8);
+
+                const data = await sendChatMessage({
+                    character,
+                    messages: recentMessages
+                });
+
+                const characterMessage = createMessage("character", data.reply);
 
                 addMessage(character.id, characterMessage);
                 renderMessages(messagesContainer, getMessages(character.id));
