@@ -1,5 +1,5 @@
 import { getSelectedCharacter } from "../state.js";
-import { setupMockChat } from "../chat.js";
+import { setupChat } from "../chat.js";
 
 export function renderChat() {
     const app = document.querySelector("#app");
@@ -32,12 +32,12 @@ export function renderChat() {
             autocomplete="off"
         />
 
-        <button class="btn btn-primary" type="submit">
-            Enviar
+        <button id="send-btn" class="btn btn-primary" type="submit">
+        Enviar
         </button>
         </form>
     </section>
     `;
 
-    setupMockChat(character);
+    setupChat(character);
 }  

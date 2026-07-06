@@ -1,74 +1,58 @@
-const mockReplies = {
-    deadpool: [
-        "Wow, gran mensaje. Casi llamo a los guionistas para que lo incluyan en la próxima escena.",
-        "Te respondería con una explosión, pero el presupuesto del proyecto es de estudiante.",
-        "Interesante. Muy interesante. O al menos eso diría si no estuviera atrapado en una SPA."
-    ],
-    rick: [
-        "Mirá, técnicamente eso tiene sentido... más o menos. No lo arruinemos con demasiada emoción.",
-        "Eso es básico, Morty. Bueno, no sos Morty, pero se entiende.",
-        "La respuesta corta es sí. La larga implica ciencia, caos y probablemente una mala decisión."
-    ],
-    naruto: [
-        "¡Claro! Lo importante es no rendirse y seguir intentando.",
-        "Eso suena difícil, pero podés lograrlo si vas paso a paso.",
-        "¡Esa es la actitud! Sigamos avanzando con energía."
-    ]
-};
+// Coordinamos el flujo del chat
 
-export function setupMockChat(character) {
+import { ensureCharacterHistory, getMessages, addMessage } from "./chatState.js";
+
+import { renderMessages, showTyping, setChatLoading, showChatError } from "./chatRenderer.js";
+
+import { isValidMessage, createMessage, getMockReply } from "./utils.js";
+
+export function setupChat(character) {
     const form = document.querySelector("#chat-form");
     const input = document.querySelector("#chat-input");
-    const messages = document.querySelector("#messages");
+    const sendButton = document.querySelector("#send-btn");
+    const messagesContainer = document.querySelector("#messages");
+
+    let isLoading = false;
+
+    ensureCharacterHistory(character);
+    renderMessages(messagesContainer, getMessages(character.id));
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const userMessage = input.value.trim();
+        if (isLoading) return;
 
-        if (!userMessage) return;
+        const userText = input.value;
 
-        appendMessage(messages, userMessage, "user");
+        if (!isValidMessage(userText)) return;
+
+        const userMessage = createMessage("user", userText);
+
+        addMessage(character.id, userMessage);
+        renderMessages(messagesContainer, getMessages(character.id));
+
         input.value = "";
+        isLoading = true;
+        setChatLoading(input, sendButton, true);
 
-        const typing = appendTyping(messages);
+        const typingElement = showTyping(messagesContainer);
 
         setTimeout(() => {
-            typing.remove();
+            try {
+                typingElement.remove();
 
-            const reply = getMockReply(character.id);
-            appendMessage(messages, reply, "character");
-        }, 700);
+                const reply = getMockReply(character.id);
+                const characterMessage = createMessage("character", reply);
+
+                addMessage(character.id, characterMessage);
+                renderMessages(messagesContainer, getMessages(character.id));
+            } catch (error) {
+                showChatError(messagesContainer, "Ocurrió un error al generar la respuesta.");
+            } finally {
+                isLoading = false;
+                setChatLoading(input, sendButton, false);
+                input.focus();
+            }
+        }, 800);
     });
-}
-
-function appendMessage(container, text, type) {
-    const message = document.createElement("div");
-    message.className = `message message-${type}`;
-    message.textContent = text;
-
-    container.appendChild(message);
-    scrollToBottom(container);
-}
-
-function appendTyping(container) {
-    const typing = document.createElement("div");
-    typing.className = "typing";
-    typing.textContent = "Escribiendo...";
-
-    container.appendChild(typing);
-    scrollToBottom(container);
-
-    return typing;
-}
-
-function scrollToBottom(container) {
-    container.scrollTop = container.scrollHeight;
-}
-
-function getMockReply(characterId) {
-    const replies = mockReplies[characterId] || mockReplies.naruto;
-    const randomIndex = Math.floor(Math.random() * replies.length);
-
-    return replies[randomIndex];
 }
