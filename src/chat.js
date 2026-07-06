@@ -14,6 +14,7 @@ export function setupChat(character) {
     let isLoading = false;
 
     ensureCharacterHistory(character);
+    renderMessages(messagesContainer, getMessages(character.id));
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
