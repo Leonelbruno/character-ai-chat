@@ -13,7 +13,7 @@ export function renderChat() {
 
         <div>
             <h1 class="chat-title">Chat con ${character.name}</h1>
-            <p class="chat-subtitle">${character.franchise} · Respuesta simulada por ahora</p>
+            <p class="chat-subtitle">${character.franchise} · Conectado con Gemini AI</p>
         </div>
         </header>
 

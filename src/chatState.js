@@ -5,13 +5,8 @@ const chatHistories = {};
 export function ensureCharacterHistory(character) {
     if (chatHistories[character.id]) return;
 
-    chatHistories[character.id] = [
-        {
-            role: "character",
-            content: `Soy ${character.name}. Todavía no estoy conectado a Gemini, pero ya puedo ayudarte a probar la interfaz.`
-        }
-    ];
-}
+    chatHistories[character.id] = [];
+}   
 
 export function getMessages(characterId) {
     return chatHistories[characterId] || [];
