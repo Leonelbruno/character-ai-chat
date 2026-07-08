@@ -22,8 +22,6 @@ export default async function handler(req, res) {
             });
         }
 
-        console.log("USE_MOCK_AI:", process.env.USE_MOCK_AI);
-
         if (process.env.USE_MOCK_AI === "true") {
             return res.status(200).json({
                 reply: `[MOCK] Respuesta simulada de ${characterId}. No estoy usando Gemini.`
