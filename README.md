@@ -452,6 +452,10 @@ Con esta ayuda pude entender que el problema no estaba en el router, sino en có
 
 ![Chat con Rick Sanchez](./docs/screenshots/chat-rick.png)
 
+### Chat con Naruto Uzumaki
+
+![Chat con Rick Sanchez](./docs/screenshots/chat-naruto.png)
+
 ### Pantalla About
 
 ![About](./docs/screenshots/about.png)
