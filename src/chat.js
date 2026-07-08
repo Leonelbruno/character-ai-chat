@@ -38,15 +38,15 @@ export function setupChat(character) {
 
         setTimeout(async () => {
             try {
-                typingElement.remove();
-
+                
                 const recentMessages = getRecentMessages(character.id, 8);
-
+                
                 const data = await sendChatMessage({
                     character,
                     messages: recentMessages
                 });
-
+                typingElement.remove();
+                
                 const characterMessage = createMessage("character", data.reply);
 
                 addMessage(character.id, characterMessage);

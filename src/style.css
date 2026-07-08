@@ -231,7 +231,7 @@ button, input {
     place-items: center;
     width: 4rem;
     height: 4rem;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     border-radius: 1.2rem;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.12);
