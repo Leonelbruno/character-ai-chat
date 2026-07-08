@@ -293,6 +293,13 @@ GEMINI_API_KEY=variable_configurada_en_vercel
 character-ai-chat/
 ├── api/
 │   └── functions.js
+├── docs/
+│   └── screenshots/
+│       ├── about.png
+│       ├── deadpool.png
+│       ├── chat-naruto.png
+│       ├── chat-rick.png
+│       └── home-page.png
 ├── src/
 │   ├── index.html
 │   ├── style.css
