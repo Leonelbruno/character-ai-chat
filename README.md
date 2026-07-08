@@ -438,6 +438,24 @@ La solución fue usar rutas absolutas para cargar los archivos principales:
 Con esta ayuda pude entender que el problema no estaba en el router, sino en cómo el navegador estaba buscando los archivos cuando la aplicación se ejecutaba desde Vercel. Al cambiar las rutas del CSS y JavaScript a rutas absolutas, la SPA pudo cargar correctamente y las vistas /home, /chat y /about empezaron a renderizarse bien.
 ```
 
+## Capturas de pantalla
+
+### Pantalla principal
+
+![Home](./docs/screenshots/home.png)
+
+### Chat con Deadpool
+
+![Chat con Deadpool](./docs/screenshots/chat-deadpool.png)
+
+### Chat con Rick Sanchez
+
+![Chat con Rick Sanchez](./docs/screenshots/chat-rick.png)
+
+### Pantalla About
+
+![About](./docs/screenshots/about.png)
+
 ## Autor
 
 Proyecto desarrollado por Leonel Bruno Vera como parte del Módulo 3 de SoyHenry.
