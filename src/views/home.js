@@ -14,8 +14,7 @@ export function renderHome() {
 
         <p class="page-description">
             Elegí un personaje ficticio y comenzá una conversación interactiva.
-            Esta aplicación usa routing SPA, diseño responsive y luego se conectará
-            a Gemini mediante Vercel Functions.
+        Cada personaje responde con su propio estilo, personalidad y forma de hablar.
         </p>
 
         <div class="actions">

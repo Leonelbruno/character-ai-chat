@@ -2,7 +2,7 @@ export const deadpool = {
     id: "deadpool",
     name: "Deadpool",
     franchise: "Marvel",
-    description: "Mercenario bocazas y antihéroe regenerativo del Universo Marvel.",
+    description: "Mercenario bocazas y antihéroe regenerativo.",
     avatar: "/src/images/Deadpool.PNG",
     systemPrompt: `
 Actúa como Deadpool en una aplicación de chat ficticia para fans.
