@@ -442,11 +442,11 @@ Con esta ayuda pude entender que el problema no estaba en el router, sino en có
 
 ### Pantalla principal
 
-![Home](./docs/screenshots/home.png)
+![Home](./docs/screenshots/home-page.png)
 
 ### Chat con Deadpool
 
-![Chat con Deadpool](./docs/screenshots/chat-deadpool.png)
+![Chat con Deadpool](./docs/screenshots/deadpool.png)
 
 ### Chat con Rick Sanchez
 
